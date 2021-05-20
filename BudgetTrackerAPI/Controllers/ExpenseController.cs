@@ -35,7 +35,7 @@ namespace BudgetTrackerAPI.Controllers
 
         [HttpDelete]
         [Route("{id:int}/")]
-        public async Task<IActionResult> DeleteIncome(int id)
+        public async Task<IActionResult> DeleteExpense(int id)
         {
             var result = await _expenseService.DeleteExpenseByIdAsync(id);
             if (result)
@@ -43,6 +43,14 @@ namespace BudgetTrackerAPI.Controllers
                 return Ok("Expense deleted");
             }
             return NotFound("Failed to delete Expense");
+        }
+
+        [HttpPut]
+        [Route("updateExpense")]
+        public async Task<IActionResult> UpdateExpense(ExpenseUpdateRequestModel updateExpense)
+        {
+            var review = await _expenseService.UpdateExpenditures(updateExpense);
+            return Ok(review);
         }
     }
 }

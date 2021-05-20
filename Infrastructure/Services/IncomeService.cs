@@ -71,6 +71,16 @@ namespace BudgetTracker.Infrastructure.Services
             return false;
           
         }
+
+        public async Task<Incomes> UpdateIncome(IncomeUpdateRequestModel UpdateIncome)
+        {
+
+            var updateExpense = new Incomes { Id = UpdateIncome.Id, UserId = UpdateIncome.UserId, Amount = UpdateIncome.Amount, Description = UpdateIncome.Description, IncomeDate = UpdateIncome.IncomeDate, Remarks = UpdateIncome.Remarks };
+            var exp = await _incomeRepository.UpdateAsync(updateExpense);
+            var updatedIncome = new Incomes { Id = exp.Id, UserId = exp.UserId, Amount = exp.Amount, Description = exp.Description, IncomeDate = exp.IncomeDate, Remarks = exp.Remarks };
+            return updatedIncome;
+            
+        }
     }
 
 }

@@ -46,6 +46,14 @@ namespace BudgetTrackerAPI.Controllers
             return NotFound("Failed to delete Income");
         }
 
+        [HttpPut]
+        [Route("updateIncome")]
+        public async Task<IActionResult> UpdateIncome(IncomeUpdateRequestModel updateIncome)
+        {
+            var review = await _incomeService.UpdateIncome(updateIncome);
+            return Ok(review);
+        }
+
 
     }
 }

@@ -65,6 +65,17 @@ namespace BudgetTracker.Infrastructure.Services
             return false;
         }
 
-       
+        public async Task<Expenditures> UpdateExpenditures(ExpenseUpdateRequestModel updateExp)
+        {
+
+           
+
+            
+            var updateExpense = new Expenditures { Id = updateExp.Id, UserId=updateExp.UserId, Amount = updateExp.Amount, Description= updateExp.Description , ExpDate= updateExp.ExpDate, Remarks= updateExp.Remarks };
+            var exp = await _expenseRepository.UpdateAsync(updateExpense);
+            var updatedExp = new Expenditures { Id = exp.Id, UserId=exp.UserId, Amount = exp.Amount, Description = exp.Description, ExpDate = exp.ExpDate, Remarks= exp.Remarks };
+            return updatedExp;
+           
+        }
     }
 }

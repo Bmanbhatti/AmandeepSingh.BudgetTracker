@@ -1,4 +1,5 @@
-﻿using BudgetTracker.ApplicationCore.Models.Request;
+﻿using BudgetTracker.ApplicationCore.Entities;
+using BudgetTracker.ApplicationCore.Models.Request;
 using BudgetTracker.ApplicationCore.Models.Response;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,8 @@ namespace BudgetTracker.ApplicationCore.ServiceInterface
     public interface IExpenseService
     {
         Task<AddExpenseResponseModel> AddExpense(AddExpenseModel addExpense);
+
+        Task<Expenditures> UpdateExpenditures(ExpenseUpdateRequestModel addIncome);
 
         Task<bool> DeleteExpenseByIdAsync(int id);
     }
